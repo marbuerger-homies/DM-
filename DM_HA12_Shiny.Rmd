@@ -1,18 +1,13 @@
 ---
-title: "Untitled"
+title: "DM_HA12_Shiny"
 runtime: shiny
 output: html_document
 ---
+Autoren: Jelena Fleischmann, Lena Brinkmann, Finn Möller, Florian Behnke, (Eike Schön)
 
-This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately. 
+Bei der Integrierung von sinnvollen Map Farben (heat, terrain..) stießen wir auf Probleme. Zwar war es möglich die Karte in rot/grün/blau darzustellen, jedoch hatte dies visuell keinen weiteren Wert. Daher sind wir jetzt unter der Mithilfe von Eike auf die Lösung mittels Schleife gekommen.
 
-To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
-
-## Inputs and Outputs
-
-You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
-
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 setwd("/home/florian/Schreibtisch/UNI/Master/1_Semester/Datenmanagement/Basisdaten/Fogo")
 library(sp)
 library(rgdal)
@@ -41,7 +36,7 @@ inputPanel(
               animate = animationOptions(interval = 10, loop = TRUE, 
                                          playButton = NULL, pauseButton = NULL)),
   
-  selectInput("col", label = "Fogo-Farbe:",
+  selectInput("col", label = "Map color",
               choices = c("gray","terrain","sea-land"), selected = "sea-land")
 )
 
@@ -75,4 +70,3 @@ finalplot
 })
 ```
 
-??terrain
